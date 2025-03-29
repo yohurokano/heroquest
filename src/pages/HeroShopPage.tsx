@@ -64,7 +64,7 @@ const HeroShopPage: React.FC = () => {
                 className={`${styles.shopItem} ${owned ? styles.ownedItem : ''}`}
               >
                 <div className={styles.itemImage}>
-                  <img src={`/assets/shop/${item.id}.png`} alt={item.name} />
+                  <img src={`src/assets/shop/${item.id}.png`} alt={item.name} />
                 </div>
                 <div className={styles.itemInfo}>
                   <h3 className={styles.itemName}>{item.name}</h3>
