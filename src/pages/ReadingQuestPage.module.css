@@ -1,0 +1,367 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Header Styles */
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .backButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .backIcon {
+    font-size: 1.3rem;
+    color: #333;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    flex: 1;
+  }
+  
+  .titleIcon {
+    margin-right: 0.5rem;
+    color: #58cc02;
+  }
+  
+  .progress {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 1rem;
+  }
+  
+  .xpDisplay {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background-color: rgba(88, 204, 2, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #46a302;
+  }
+  
+  .gemIcon {
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Main Content */
+  .mainContent {
+    flex: 1;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Level Selection */
+  .levelSelection {
+    padding: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+  }
+  
+  .levelsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  .levelCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .levelCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .levelCard.locked {
+    opacity: 0.7;
+    background-color: #f9f9f9;
+  }
+  
+  .levelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+  
+  .levelHeader h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .trophyIcon {
+    color: #ffc107;
+  }
+  
+  .lockIcon {
+    color: #999;
+  }
+  
+  .levelDescription {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 1rem 0;
+    min-height: 40px;
+  }
+  
+  .levelInfo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+  }
+  
+  .lockInfo {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .unlockButton {
+    background-color: #58cc02;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .unlockButton:hover {
+    background-color: #46a302;
+  }
+  
+  .startButton {
+    width: 100%;
+    background-color: #58cc02;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .startButton:hover {
+    background-color: #46a302;
+  }
+  
+  /* Quest Step Styles */
+  .questStep {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .stepHeader {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .xpBadge {
+    display: flex;
+    align-items: center;
+    background-color: rgba(88, 204, 2, 0.1);
+    color: #46a302;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .passageCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    line-height: 1.6;
+  }
+  
+  .passage {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .questionCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .question {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .choiceButton {
+    padding: 1rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+  }
+  
+  .choiceButton:hover {
+    border-color: #58cc02;
+    background-color: rgba(88, 204, 2, 0.05);
+  }
+  
+  .choiceButton.selected {
+    border-color: #58cc02;
+    background-color: rgba(88, 204, 2, 0.1);
+    color: #46a302;
+    font-weight: 500;
+  }
+  
+  .feedback {
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  
+  .correct {
+    background-color: rgba(88, 204, 2, 0.1);
+    color: #46a302;
+  }
+  
+  .incorrect {
+    background-color: rgba(255, 100, 87, 0.1);
+    color: #ff6457;
+  }
+  
+  .submitButton {
+    width: 100%;
+    background-color: #58cc02;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #46a302;
+  }
+  
+  .submitButton:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  @media (min-width: 600px) {
+    .header {
+      padding: 1rem 1.5rem;
+    }
+    
+    .mainContent {
+      padding: 1.5rem;
+    }
+    
+    .title {
+      font-size: 1.5rem;
+    }
+    
+    .levelsGrid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .passage {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 350px) {
+    .header {
+      padding: 0.8rem;
+    }
+    
+    .title {
+      font-size: 1.1rem;
+    }
+    
+    .levelCard {
+      padding: 1rem;
+    }
+    
+    .choiceButton {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .submitButton {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }

@@ -1,0 +1,282 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .backButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .backIcon {
+    font-size: 1.3rem;
+    color: #333;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .titleIcon {
+    margin-right: 0.5rem;
+    color: #58cc02;
+  }
+  
+  .mainContent {
+    flex: 1;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Hero Card Container */
+  .heroCardContainer {
+    background-color: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Progress Section */
+  .progressContainer {
+    background-color: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .progressHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0 0 0 0.5rem;
+    font-weight: 600;
+  }
+  
+  .sectionIcon {
+    color: #58cc02;
+  }
+  
+  .progressBar {
+    height: 8px;
+    background-color: #e5e5e5;
+    border-radius: 4px;
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  
+  .progressFill {
+    height: 100%;
+    background-color: #58cc02;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  
+  .progressText {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* Stats Grid */
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .statCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+  }
+  
+  .statIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(88, 204, 2, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: #58cc02;
+    font-size: 1.1rem;
+  }
+  
+  .statContent {
+    flex: 1;
+  }
+  
+  .statLabel {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+  }
+  
+  .statValue {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Level Up Banner */
+  .levelUpBanner {
+    background-color: rgba(88, 204, 2, 0.1);
+    color: #46a302;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .levelUpIcon {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Action Buttons */
+  .actionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .button {
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+  
+  .primaryButton {
+    background-color: #58cc02;
+    color: white;
+  }
+  
+  .primaryButton:hover {
+    background-color: #46a302;
+  }
+  
+  .secondaryButton {
+    background-color: white;
+    color: #333;
+    border: 2px solid #e5e5e5;
+  }
+  
+  .secondaryButton:hover {
+    border-color: #c0c0c0;
+  }
+  
+  .buttonIcon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 600px) {
+    .header {
+      padding: 1rem 1.5rem;
+    }
+    
+    .mainContent {
+      padding: 1.5rem;
+    }
+    
+    .title {
+      font-size: 1.5rem;
+    }
+    
+    .statsGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .actionButtons {
+      flex-direction: row;
+    }
+    
+    .button {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 350px) {
+    .header {
+      padding: 0.8rem;
+    }
+    
+    .title {
+      font-size: 1.1rem;
+    }
+    
+    .statCard {
+      padding: 0.8rem;
+    }
+    
+    .statIcon {
+      width: 36px;
+      height: 36px;
+      font-size: 1rem;
+      margin-right: 0.8rem;
+    }
+    
+    .button {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }

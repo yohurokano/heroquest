@@ -1,0 +1,218 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .backButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .backIcon {
+    font-size: 1.3rem;
+    color: #333;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .titleIcon {
+    margin-right: 0.5rem;
+    color: #58cc02;
+  }
+  
+  .mainContent {
+    flex: 1;
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .progressContainer {
+    background-color: white;
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .progressText {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .progressBar {
+    height: 8px;
+    background-color: #e5e5e5;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progressFill {
+    height: 100%;
+    background-color: #58cc02;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+  
+  .challengesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .challengeCard {
+    background-color: white;
+    border-radius: 16px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .challengeCard:hover {
+    transform: translateY(-2px);
+  }
+  
+  .challengeCard.completed {
+    opacity: 0.8;
+  }
+  
+  .challengeContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .challengeText {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    flex: 1;
+  }
+  
+  .rewardBadge {
+    display: flex;
+    align-items: center;
+    background-color: #f0f8ff;
+    border-radius: 50px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #1cb0f6;
+    margin-left: 1rem;
+  }
+  
+  .gemIcon {
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  .completeButton {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #58cc02;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .completeButton:hover {
+    background-color: #46a302;
+  }
+  
+  .completedBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #666;
+  }
+  
+  .checkIcon {
+    margin-right: 0.5rem;
+    color: #58cc02;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 600px) {
+    .header {
+      padding: 1rem 1.5rem;
+    }
+    
+    .mainContent {
+      padding: 1.5rem;
+    }
+    
+    .title {
+      font-size: 1.5rem;
+    }
+    
+    .challengeText {
+      font-size: 1.05rem;
+    }
+  }
+  
+  @media (max-width: 350px) {
+    .header {
+      padding: 0.8rem;
+    }
+    
+    .title {
+      font-size: 1.1rem;
+    }
+    
+    .challengeContent {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .rewardBadge {
+      margin-left: 0;
+    }
+  }

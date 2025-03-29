@@ -1,0 +1,153 @@
+[
+    {
+      "level": 1,
+      "requiredXP": 0,
+      "questions": [
+        {
+          "type": "basic",
+          "question": "Sonic runs 3 rings/sec. How many in 5 seconds?",
+          "answer": 15,
+          "hint": "Multiply rings per second by number of seconds",
+          "xp": 10
+        },
+        {
+          "type": "basic",
+          "question": "Deku loses 25 power points from 100. How much left?",
+          "answer": 75,
+          "hint": "Subtract the lost points from the total",
+          "xp": 10
+        },
+        {
+          "type": "basic",
+          "question": "2 punches (15) + 1 kick (25). How many points lost?",
+          "answer": 55,
+          "hint": "Calculate each punch and kick separately then add them",
+          "xp": 10
+        },
+        {
+          "type": "fraction",
+          "question": "What is 1/2 of 10?",
+          "answer": 5,
+          "hint": "Multiply the fraction by the number",
+          "xp": 10
+        },
+        {
+          "type": "decimal",
+          "question": "Bakugo spends 3.5 energy units in battle, how many after 10 units?",
+          "answer": 6.5,
+          "hint": "Subtract the decimal from the total",
+          "xp": 10
+        },
+        {
+          "type": "logic",
+          "question": "A villain hides in one of 3 caves. He isn\u2019t in Cave 1 or Cave 2. Where is he?",
+          "answer": "Cave 3",
+          "hint": "Process of elimination",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "requiredXP": 50,
+      "questions": [
+        {
+          "type": "basic",
+          "question": "All Might defeats 8 villains/hr. How many in 3 hours?",
+          "answer": 24,
+          "hint": "Multiply villains per hour by number of hours",
+          "xp": 15
+        },
+        {
+          "type": "basic",
+          "question": "3 team members with 120 power each. What is total power?",
+          "answer": 360,
+          "hint": "Multiply power points by team size",
+          "xp": 15
+        },
+        {
+          "type": "basic",
+          "question": "5 floors, 7 rooms each. Total rooms?",
+          "answer": 35,
+          "hint": "Multiply floors by rooms per floor",
+          "xp": 15
+        },
+        {
+          "type": "fraction",
+          "question": "Midoriya uses 3/4 of his 100 power. How much used?",
+          "answer": 75,
+          "hint": "Multiply the fraction by total power",
+          "xp": 15
+        },
+        {
+          "type": "decimal",
+          "question": "A laser gun drains 2.5 units per shot. How much for 4 shots?",
+          "answer": 10.0,
+          "hint": "Multiply decimal by number of shots",
+          "xp": 15
+        },
+        {
+          "type": "logic",
+          "question": "Hero sees 2 clues: red means danger, blue means trap. Green means?",
+          "answer": "safe",
+          "hint": "Green is neither danger nor trap",
+          "xp": 15
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "requiredXP": 100,
+      "questions": [
+        {
+          "type": "basic",
+          "question": "Hero travels 60 miles in 2 hours. Speed?",
+          "answer": 30,
+          "hint": "Divide distance by time",
+          "xp": 20
+        },
+        {
+          "type": "basic",
+          "question": "Potion restores 15% of 200 health. How much?",
+          "answer": 30,
+          "hint": "Multiply 0.15 \u00d7 200",
+          "xp": 20
+        },
+        {
+          "type": "basic",
+          "question": "3 heroes = 6 hrs mission. How long for 2 heroes?",
+          "answer": 9,
+          "hint": "Inverse proportion",
+          "xp": 20
+        },
+        {
+          "type": "fraction",
+          "question": "A hero uses 2/5 of 50 energy. How much used?",
+          "answer": 20,
+          "hint": "Multiply 2/5 \u00d7 50",
+          "xp": 20
+        },
+        {
+          "type": "decimal",
+          "question": "Each boost adds 1.25 points. What\u2019s 6 boosts?",
+          "answer": 7.5,
+          "hint": "Multiply 1.25 \u00d7 6",
+          "xp": 20
+        },
+        {
+          "type": "logic",
+          "question": "Villains appear on even-numbered days. If today is 5th, when next?",
+          "answer": 6,
+          "hint": "Find the next even number after 5",
+          "xp": 20
+        },
+        {
+          "type": "visual",
+          "question": "Count the stars in the image (visual_1.png)",
+          "answer": 12,
+          "hint": "Look carefully at all corners",
+          "xp": 25
+        }
+      ]
+    }
+  ]

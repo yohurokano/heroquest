@@ -1,0 +1,252 @@
+.card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .card.large {
+    max-width: 380px;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cardHeader {
+    position: relative;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .card.large .cardHeader {
+    height: 150px;
+  }
+  
+  .avatarContainer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .card.large .avatarContainer {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .chibi {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+  
+  .streakBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: white;
+    border-radius: 50px;
+    padding: 0.3rem 0.6rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #ff9600;
+  }
+  
+  .streakIcon {
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  .cardBody {
+    padding: 1.2rem;
+  }
+  
+  .nameRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    justify-content: space-between;
+  }
+  
+  .heroName {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+  }
+  
+  .card.large .heroName {
+    font-size: 1.4rem;
+  }
+  
+  .crownIcon {
+    color: #ffd600;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  
+  .heroDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .detailItem {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detailLabel {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+  }
+  
+  .detailValue {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .statsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .gemCount {
+    display: flex;
+    align-items: center;
+    background-color: #f0f8ff;
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    color: #1cb0f6;
+  }
+  
+  .gemIcon {
+    margin-right: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .xpSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .levelBadge {
+    background-color: #f0f8ff;
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    color: #1cb0f6;
+    margin-right: 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .xpBarContainer {
+    position: relative;
+    width: 80px;
+    height: 20px;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .xpBarFill {
+    height: 100%;
+    background-color: #58cc02;
+    transition: width 0.5s ease;
+  }
+  
+  .xpText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .maxLevelBadge {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 214, 0, 0.1);
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    color: #ffd600;
+    font-size: 0.85rem;
+  }
+  
+  .crownIconSmall {
+    margin-right: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 400px) {
+    .card {
+      max-width: 280px;
+    }
+    
+    .heroDetails {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .statsRow {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    
+    .xpSection {
+      width: 100%;
+    }
+    
+    .xpBarContainer {
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+  
+  @media (min-width: 600px) {
+    .card {
+      max-width: 340px;
+    }
+    
+    .card.large {
+      max-width: 420px;
+    }
+    
+    .heroName {
+      font-size: 1.3rem;
+    }
+    
+    .card.large .heroName {
+      font-size: 1.5rem;
+    }
+  }
