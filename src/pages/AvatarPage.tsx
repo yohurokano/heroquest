@@ -5,7 +5,7 @@ import { IoMdArrowRoundBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { playSound } from '../utils/soundManager';
 import HeroCard from '../components/HeroCard';
-import BottomNav from '../components/BottomNav';
+
 
 type Avatar = {
   name: string;
@@ -216,7 +216,6 @@ const AvatarPage: React.FC = () => {
           Save Changes
         </button>
       </main>
-      <BottomNav />
     </div>
   );
 };

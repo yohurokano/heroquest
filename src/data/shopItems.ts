@@ -29,9 +29,9 @@ export type ShopItem = {
       type: 'effect',
     },
     {
-      id: 'sticker-sonic',
-      name: 'Sonic Sticker',
-      description: 'Decorate with Sonic power!',
+      id: 'sticker',
+      name: 'Star Sticker',
+      description: 'Decorate with Star power!',
       cost: 60,
       type: 'sticker',
     }

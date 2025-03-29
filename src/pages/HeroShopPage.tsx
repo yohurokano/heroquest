@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import styles from './HeroShopPage.module.css';
 import { FaStore, FaCheck, FaGem } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
-import BottomNav from '../components/BottomNav';
 
 const HeroShopPage: React.FC = () => {
   const [xp, setXp] = useState(0);
@@ -65,7 +64,7 @@ const HeroShopPage: React.FC = () => {
                 className={`${styles.shopItem} ${owned ? styles.ownedItem : ''}`}
               >
                 <div className={styles.itemImage}>
-                  <img src={`/assets/shop/${item.id}.png`} alt={item.name} />
+                  <img src={`src/assets/shop/${item.id}.png`} alt={item.name} />
                 </div>
                 <div className={styles.itemInfo}>
                   <h3 className={styles.itemName}>{item.name}</h3>
@@ -98,7 +97,6 @@ const HeroShopPage: React.FC = () => {
           })}
         </div>
       </main>
-      <BottomNav />
     </div>
   );
 };

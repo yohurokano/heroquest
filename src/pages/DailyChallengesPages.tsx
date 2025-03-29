@@ -7,7 +7,6 @@ import styles from './DailyChallengesPage.module.css';
 import { FaCalendarCheck, FaCheck, FaGem } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../components/BottomNav';
 
 type Challenge = {
   id: string;
@@ -113,7 +112,6 @@ const DailyChallengesPage: React.FC = () => {
           ))}
         </div>
       </main>
-      <BottomNav />
     </div>
   );
 };
