@@ -64,7 +64,7 @@ const HeroShopPage: React.FC = () => {
               >
                 <figure className="px-4 pt-4">
                   <img 
-                    src={`src/assets/shop/${item.id}.png`} 
+                    src={`public/assets/shop/${item.id}.png`} 
                     alt={item.name} 
                     className="rounded-xl aspect-square object-cover w-full"
                   />

@@ -29,7 +29,7 @@ const HeroCard: React.FC<Props> = ({
     const c = costume.toLowerCase().includes('hero') ? 'hero' : 
               costume.toLowerCase().includes('adventurer') ? 'adventurer' :
               costume.toLowerCase().includes('mage') ? 'mage' : 'speedster';
-    return `src/assets/chibi/${h}_${c}.png`;
+    return `public/assets/chibi/${h}_${c}.png`;
   };
 
   const level = Math.floor(xp / 100) + 1;
