@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addXP, getXP } from '../utils/xpManager';
 import { unlockLevel, getUnlockedLevels } from '../utils/progressManager';
-import styles from './MathQuestPage.module.css';
 import { FaBrain, FaGem, FaLock, FaTrophy } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { playSound } from '../utils/soundManager';
 import { triggerSparkles } from '../utils/sparkle';
 import mathLevels from '../data/mathLevels.json';
+import { incrementStreak } from '../utils/streakManager';
 
 type MathQuestion = {
   type: 'basic' | 'fraction' | 'decimal' | 'logic' | 'visual';
@@ -24,7 +24,6 @@ type MathLevel = {
 };
 
 const typedLevels = mathLevels as MathLevel[];
-
 
 const MathQuestPage: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
@@ -59,6 +58,8 @@ const MathQuestPage: React.FC = () => {
       setUserAnswer('');
       setShowHint(false);
 
+      incrementStreak();
+
       if (step === currentLevel.questions.length - 1) {
         unlockLevel('math', currentLevel.level + 1);
         setUnlockedLevels(prev => [...prev, currentLevel.level + 1]);
@@ -88,43 +89,66 @@ const MathQuestPage: React.FC = () => {
 
   if (selectedLevel !== null && currentQuestion) {
     return (
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <button className={styles.backButton} onClick={() => setSelectedLevel(null)}>
-            <IoMdArrowRoundBack className={styles.backIcon} />
+      <div className="min-h-screen bg-base-100 text-base-content">
+        <header className="navbar bg-base-200 shadow-lg px-4 py-2 fixed top-0 left-0 right-0 z-50">
+          <button 
+            className="btn btn-ghost btn-circle"
+            onClick={() => setSelectedLevel(null)}
+          >
+            <IoMdArrowRoundBack className="w-6 h-6" />
           </button>
-          <h1 className={styles.title}><FaBrain className={styles.titleIcon} /> Math Quest - Level {currentLevel.level}</h1>
-          <div className={styles.progress}>Question {step + 1} of {currentLevel.questions.length}</div>
+          <div className="flex-1 flex items-center gap-2 ml-2">
+            <FaBrain className="text-primary w-6 h-6" />
+            <h1 className="text-xl font-bold">Math Quest - Level {currentLevel.level}</h1>
+          </div>
+          <div className="badge badge-neutral">
+            Question {step + 1} of {currentLevel.questions.length}
+          </div>
         </header>
 
-        <main className={styles.mainContent}>
-          <div className={styles.questionCard}>
-            <div className={styles.questionHeader}>
-              <h3 className={styles.questionText}>{currentQuestion.question}</h3>
-              <button className={styles.hintButton} onClick={() => setShowHint(!showHint)}>
-                {showHint ? 'Hide Hint' : 'Need Help?'}
-              </button>
-            </div>
-
-            {showHint && <div className={styles.hintBox}><p>{currentQuestion.hint}</p></div>}
-
-            <input
-              className={styles.input}
-              type="number"
-              value={userAnswer}
-              onChange={e => setUserAnswer(e.target.value)}
-              placeholder="Enter your answer"
-            />
-
-            {feedback && (
-              <div className={`${styles.feedback} ${feedback.includes('✅') ? styles.correct : styles.incorrect}`}>
-                {feedback}
+        <main className="container mx-auto px-4 pt-20 pb-8">
+          <div className="card bg-base-200 shadow-lg mt-4">
+            <div className="card-body">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-lg font-medium">{currentQuestion.question}</h3>
+                <button 
+                  className="btn btn-sm btn-ghost"
+                  onClick={() => setShowHint(!showHint)}
+                >
+                  {showHint ? 'Hide Hint' : 'Need Help?'}
+                </button>
               </div>
-            )}
 
-            <button className={styles.submitButton} onClick={handleCheck} disabled={!userAnswer}>
-              Check Answer
-            </button>
+              {showHint && (
+                <div className="alert bg-base-300">
+                  <p>{currentQuestion.hint}</p>
+                </div>
+              )}
+
+              <input
+                className="input input-bordered w-full"
+                type="number"
+                value={userAnswer}
+                onChange={e => setUserAnswer(e.target.value)}
+                placeholder="Enter your answer"
+              />
+
+              {feedback && (
+                <div className={`alert ${feedback.includes('✅') ? 'alert-success' : 'alert-error'} mt-4`}>
+                  {feedback}
+                </div>
+              )}
+
+              <div className="card-actions justify-end mt-4">
+                <button 
+                  className="btn btn-primary"
+                  onClick={handleCheck} 
+                  disabled={!userAnswer}
+                >
+                  Check Answer
+                </button>
+              </div>
+            </div>
           </div>
         </main>
       </div>
@@ -132,20 +156,27 @@ const MathQuestPage: React.FC = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <button className={styles.backButton} onClick={() => navigate('/')}>
-          <IoMdArrowRoundBack className={styles.backIcon} />
+    <div className="min-h-screen bg-base-100 text-base-content">
+      <header className="navbar bg-base-200 shadow-lg px-4 py-2 fixed top-0 left-0 right-0 z-50">
+        <button 
+          className="btn btn-ghost btn-circle"
+          onClick={() => navigate('/')}
+        >
+          <IoMdArrowRoundBack className="w-6 h-6" />
         </button>
-        <h1 className={styles.title}><FaBrain className={styles.titleIcon} /> Math Quest</h1>
-        <div className={styles.xpDisplay}>
-          <FaGem className={styles.gemIcon} /> <span>{totalXP} XP</span>
+        <div className="flex-1 flex items-center gap-2 ml-2">
+          <FaBrain className="text-primary w-6 h-6" />
+          <h1 className="text-xl font-bold">Math Quest</h1>
+        </div>
+        <div className="badge badge-neutral gap-2">
+          <FaGem className="w-4 h-4" />
+          {totalXP} XP
         </div>
       </header>
 
-      <main className={styles.levelSelection}>
-        <h2 className={styles.sectionTitle}>Select Difficulty Level</h2>
-        <div className={styles.levelsGrid}>
+      <main className="container mx-auto px-4 pt-20 pb-8">
+        <h2 className="text-2xl font-bold mb-6">Select Difficulty Level</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {typedLevels.map((level: MathLevel, index: number) => {
             const isUnlocked = unlockedLevels.includes(level.level) || index === 0;
             const canUnlock = totalXP >= level.requiredXP && !isUnlocked;
@@ -153,44 +184,57 @@ const MathQuestPage: React.FC = () => {
             return (
               <div
                 key={level.level}
-                className={`${styles.levelCard} ${isUnlocked ? styles.unlocked : styles.locked}`}
+                className={`card bg-base-200 shadow-lg ${!isUnlocked ? 'opacity-75' : 'cursor-pointer hover:bg-base-300'}`}
                 onClick={() => isUnlocked && startLevel(index)}
               >
-                <div className={styles.levelHeader}>
-                  <h3>Level {level.level}</h3>
-                  {isUnlocked ? <FaTrophy className={styles.trophyIcon} /> : <FaLock className={styles.lockIcon} />}
-                </div>
-
-                <div className={styles.levelInfo}>
-                  <p>{level.questions.length} questions</p>
-                  <p>Reward: {level.questions.reduce((sum: number, q: MathQuestion) => sum + q.xp, 0)} XP</p>
-                </div>
-
-                {!isUnlocked && (
-                  <div className={styles.lockInfo}>
-                    {canUnlock ? (
-                      <button
-                        className={styles.unlockButton}
-                        onClick={e => {
-                          e.stopPropagation();
-                          unlockLevel('math', level.level);
-                          setUnlockedLevels(prev => [...prev, level.level]);
-                          playSound('success');
-                        }}
-                      >
-                        Unlock Now
-                      </button>
+                <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-medium">Level {level.level}</h3>
+                    {isUnlocked ? (
+                      <FaTrophy className="text-warning w-6 h-6" />
                     ) : (
-                      <p>Requires {level.requiredXP} XP</p>
+                      <FaLock className="text-error w-6 h-6" />
                     )}
                   </div>
-                )}
 
-                {isUnlocked && (
-                  <button className={styles.startButton} onClick={() => startLevel(index)}>
-                    Start Level
-                  </button>
-                )}
+                  <div className="mt-4 space-y-2">
+                    <p>{level.questions.length} questions</p>
+                    <p className="badge badge-neutral">
+                      Reward: {level.questions.reduce((sum: number, q: MathQuestion) => sum + q.xp, 0)} XP
+                    </p>
+                  </div>
+
+                  {!isUnlocked && (
+                    <div className="mt-4">
+                      {canUnlock ? (
+                        <button
+                          className="btn btn-sm btn-primary w-full"
+                          onClick={e => {
+                            e.stopPropagation();
+                            unlockLevel('math', level.level);
+                            setUnlockedLevels(prev => [...prev, level.level]);
+                            playSound('success');
+                          }}
+                        >
+                          Unlock Now
+                        </button>
+                      ) : (
+                        <div className="badge badge-neutral">
+                          Requires {level.requiredXP} XP
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {isUnlocked && (
+                    <button 
+                      className="btn btn-outline btn-sm w-full mt-4"
+                      onClick={() => startLevel(index)}
+                    >
+                      Start Level
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}

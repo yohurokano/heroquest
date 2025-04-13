@@ -1,226 +1,255 @@
-[
 {
-    "level": 1,
-    "requiredXP": 0,
-    "title": "Hero Basics",
-    "description": "Create your hero identity",
-    "steps": [
-      {
-        "type": "text",
-        "question": "What's your hero name?",
-       " placeholder": "e.g. Deku, All Might",
-        "xp": 10
-      },
-      {
-        "type": "text",
-        "question": "What's your quirk (superpower)?",
-       " placeholder": "e.g. One For All, Explosion",
-        "xp": 10
-      },
-      {
-        "type": "quiz",
-        "question": "Who says 'Plus Ultra!'?",
-        "options": ["Sonic", "Batman", "Plus Ultra!"],
-        "correctAnswer": "Plus Ultra!",
-        "hint": "This is the motto of UA High in My Hero Academia",
-        "xp": 15
-      },
-      {
-        "type": "text",
-        "question": "Where is your hero from?",
-       " placeholder": "e.g. Tokyo, Gotham, Metropolis",
-        "xp": 10
-      },
-      {
-        "type": "text",
-        "question": "What is your hero's catchphrase?",
-       " placeholder": "e.g. Smash!, Let's go!",
-        "xp": 10
-      },
-      {
-        "type": "quiz",
-        "question": "Which item would a hero likely carry?",
-        "options": ["Banana", "Cape", "Pillow"],
-        "correctAnswer": "Cape",
-        "hint": "Think classic superhero outfits!",
-        "xp": 15
-      },
-      {
-        "type": "quiz",
-        "question": "What is a sidekick?",
-        "options": ["Villain", "Main Hero", "Helper"],
-        "correctAnswer": "Helper",
-        "hint": "Usually supports the main hero",
-        "xp": 15
-      },
-      {
-        "type": "text",
-        "question": "What's your hero's favorite food?",
-       " placeholder": "e.g. Ramen, Tacos, Pizza",
-        "xp": 10
-      },
-      {
-        "type": "quiz",
-        "question": "Who is Batman’s partner?",
-        "options": ["Robin", "Luffy", "Naruto"],
-        "correctAnswer": "Robin",
-        "hint": "He wears a red and green costume",
-        "xp": 15
-      },
-      {
-        "type": "fill-blank",
-        "question": "Complete the sentence: 'I am ______!'",
-        "answer": "Batman",
-        "hint": "A famous line from the Dark Knight",
-        "xp": 15
-      }
-    ]
-  },
-  {
-    "level": 2,
-    "requiredXP": 50,
-    "title": "Hero Vocabulary",
-    "description": "Expand your heroic vocabulary",
-    "steps": [
-      {
-        "type": "fill-blank",
-        "question": "Complete the sentence: 'With great power comes great ______.'",
-        "answer": "responsibility",
-        "hint": "A famous quote from Spider-Man",
-        "xp": 15
-      },
-      {
-        "type": "synonym",
-        "question": "What's another word for 'heroic'?",
-        "answer": "brave",
-        "acceptable": ["courageous", "valiant", "gallant"],
-        "xp": 15
-      },
-      {
-        "type": "definition",
-        "question": "What does 'quirk' mean in My Hero Academia?",
-        "answer": "superpower",
-        "acceptable": ["ability", "power"],
-        "xp": 20
-      },
-      {
-        "type": "fill-blank",
-        "question": "Fill in: 'Heroes always ______ others before themselves.'",
-        "answer": "put",
-        "hint": "Think of priorities",
-        "xp": 15
-      },
-      {
-        "type": "synonym",
-        "question": "What’s another word for ‘villain’?",
-        "answer": "enemy",
-        "acceptable": ["opponent", "bad guy", "antagonist"],
-        "xp": 15
-      },
-      {
-        "type": "definition",
-        "question": "What is a ‘sidekick’?",
-        "answer": "assistant",
-        "acceptable": ["helper", "partner"],
-        "xp": 15
-      },
-      {
-        "type": "quiz",
-        "question": "Which of these is a superpower?",
-        "options": ["Reading", "Flying", "Cooking"],
-        "correctAnswer": "Flying",
-        "hint": "Look up to the sky!",
-        "xp": 20
-      },
-      {
-        "type": "synonym",
-        "question": "What’s a synonym for ‘fight’?",
-        "answer": "battle",
-        "acceptable": ["combat", "duel"],
-        "xp": 15
-      },
-      {
-        "type": "definition",
-        "question": "Define ‘costume’ in a hero context.",
-        "answer": "outfit",
-        "acceptable": ["suit", "uniform"],
-        "xp": 15
-      },
-      {
-        "type": "fill-blank",
-        "question": "Fill in: ‘Justice always ______.’",
-        "answer": "wins",
-        "hint": "The hero always wins in the end",
-        "xp": 15
-      }
-    ]
-  },
-  {
-    "level": 3,
-    "requiredXP": 100,
-    "title": "Hero Storytelling",
-    "description": "Craft heroic narratives",
-    "steps": [
-      {
-        "type": "story",
-        "question": "Write a short story about your hero's first mission (min 50 words)",
-        "minWords": 50,
-        "xp": 25
-      },
-      {
-        "type": "dialogue",
-        "question": "Write a dialogue between your hero and a villain",
-        "minLines": 3,
-        "xp": 25
-      },
-      {
-        "type": "description",
-        "question": "Describe your hero's costume in detail",
-        "minWords": 30,
-        "xp": 30
-      },
-      {
-        "type": "story",
-        "question": "Write how your hero saved someone in danger.",
-        "minWords": 60,
-        "xp": 25
-      },
-      {
-        "type": "description",
-        "question": "Describe your hero’s hideout.",
-        "minWords": 40,
-        "xp": 25
-      },
-      {
-        "type": "dialogue",
-        "question": "Write a conversation between your hero and their mentor.",
-        "minLines": 3,
-        "xp": 25
-      },
-      {
-        "type": "description",
-        "question": "Describe your hero’s powers using 3 sentences.",
-        "minWords": 35,
-        "xp": 25
-      },
-      {
-        "type": "story",
-        "question": "Write about a day your hero lost and what they learned.",
-        "minWords": 70,
-        "xp": 30
-      },
-      {
-        "type": "dialogue",
-        "question": "Write a short talk between your hero and a friend before battle.",
-        "minLines": 4,
-        "xp": 25
-      },
-      {
-        "type": "story",
-        "question": "Describe your hero’s origin story.",
-        "minWords": 60,
-        "xp": 25
-      }
-    ]
+  "englishLevels": [
+    {
+      "level": 1,
+      "title": "Hero Basics",
+      "description": "Master hero fundamentals",
+      "requiredXP" : 0,
+      "subLevels": [
+        {
+          "subLevel": 1,
+          "requiredXP": 0,
+          "title": "Identity",
+          "steps": [
+            {
+              "type": "text",
+              "question": "What's your hero name?",
+              "placeholder": "e.g. Deku, All Might",
+              "xp": 10,
+              "theme": "My Hero Academia"
+            },
+            {
+              "type": "text",
+              "question": "What's your quirk (superpower)?",
+              "placeholder": "e.g. One For All, Explosion",
+              "xp": 10,
+              "theme": "My Hero Academia"
+            },
+            {
+              "type": "quiz",
+              "question": "Who says 'Plus Ultra!'?",
+              "options": ["Sonic", "Batman", "All Might"],
+              "correctAnswer": "All Might",
+              "hint": "This is the motto of UA High",
+              "xp": 15,
+              "theme": "My Hero Academia"
+            }
+          ]
+        },
+        {
+          "subLevel": 2,
+          "requiredXP": 35,
+          "title": "Origins",
+          "steps": [
+            {
+              "type": "text",
+              "question": "Where is your hero from?",
+              "placeholder": "e.g. Tokyo, Gotham, Metropolis",
+              "xp": 10,
+              "theme": "Mixed"
+            },
+            {
+              "type": "text",
+              "question": "What is your hero's catchphrase?",
+              "placeholder": "e.g. Smash!, Let's go!",
+              "xp": 10,
+              "theme": "Mixed"
+            },
+            {
+              "type": "quiz",
+              "question": "Who says 'Plus Ultra!'?",
+              "options": ["Sonic", "Batman", "All Might"],
+              "correctAnswer": "All Might",
+              "hint": "This is the motto of UA High",
+              "xp": 15,
+              "theme": "My Hero Academia"
+            }
+          ]
+        },
+        {
+          "subLevel": 3,
+          "requiredXP": 70,
+          "title": "Hero Knowledge",
+          "steps": [
+            {
+              "type": "quiz",
+              "question": "What is a sidekick?",
+              "options": ["Villain", "Main Hero", "Helper"],
+              "correctAnswer": "Helper",
+              "hint": "Usually supports the main hero",
+              "xp": 15,
+              "theme": "Mixed"
+            },
+            {
+              "type": "text",
+              "question": "What's your hero's favorite food?",
+              "placeholder": "e.g. Ramen, Tacos, Pizza",
+              "xp": 10,
+              "theme": "Mixed"
+            },
+            {
+              "type": "fill-blank",
+              "question": "Complete the sentence: 'I am ______!'",
+              "answer": "Batman",
+              "hint": "A famous line from the Dark Knight",
+              "xp": 15,
+              "theme": "DC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "Hero Vocabulary",
+      "description": "Expand your heroic language",
+      "subLevels": [
+        {
+          "subLevel": 1,
+          "requiredXP": 100,
+          "title": "Power Words",
+          "steps": [
+            {
+              "type": "fill-blank",
+              "question": "Complete: 'With great power comes great ______.'",
+              "answer": "responsibility",
+              "hint": "Spider-Man's famous quote",
+              "xp": 15,
+              "theme": "Marvel"
+            },
+            {
+              "type": "synonym",
+              "question": "What's another word for 'heroic'?",
+              "answer": "brave",
+              "acceptable": ["courageous", "valiant"],
+              "xp": 15,
+              "theme": "Mixed"
+            },
+            {
+              "type": "definition",
+              "question": "What does 'quirk' mean in My Hero Academia?",
+              "answer": "superpower",
+              "acceptable": ["ability", "power"],
+              "xp": 20,
+              "theme": "My Hero Academia"
+            }
+          ]
+        },
+        {
+          "subLevel": 2,
+          "requiredXP": 150,
+          "title": "Battle Terms",
+          "steps": [
+            {
+              "type": "synonym",
+              "question": "What's another word for 'villain'?",
+              "answer": "enemy",
+              "acceptable": ["opponent", "antagonist"],
+              "xp": 15,
+              "theme": "Mixed"
+            },
+            {
+              "type": "quiz",
+              "question": "Which of these is a superpower?",
+              "options": ["Reading", "Flying", "Cooking"],
+              "correctAnswer": "Flying",
+              "hint": "Look up to the sky!",
+              "xp": 20,
+              "theme": "Mixed"
+            },
+            {
+              "type": "synonym",
+              "question": "What's a synonym for 'fight'?",
+              "answer": "battle",
+              "acceptable": ["combat", "duel"],
+              "xp": 15,
+              "theme": "Mixed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "title": "Hero Storytelling",
+      "description": "Create heroic narratives",
+      "subLevels": [
+        {
+          "subLevel": 1,
+          "requiredXP": 200,
+          "title": "First Adventures",
+          "steps": [
+            {
+              "type": "story",
+              "question": "Write about your hero's first mission (min 50 words)",
+              "minWords": 50,
+              "xp": 25,
+              "theme": "Mixed"
+            },
+            {
+              "type": "dialogue",
+              "question": "Write a dialogue between your hero and a villain",
+              "minLines": 3,
+              "xp": 25,
+              "theme": "Mixed"
+            }
+          ]
+        },
+        {
+          "subLevel": 2,
+          "requiredXP": 250,
+          "title": "Hero Details",
+          "steps": [
+            {
+              "type": "description",
+              "question": "Describe your hero's costume in detail",
+              "minWords": 30,
+              "xp": 30,
+              "theme": "Mixed"
+            },
+            {
+              "type": "description",
+              "question": "Describe your hero's hideout",
+              "minWords": 40,
+              "xp": 25,
+              "theme": "Mixed"
+            }
+          ]
+        },
+        {
+          "subLevel": 3,
+          "requiredXP": 300,
+          "title": "Heroic Journeys",
+          "steps": [
+            {
+              "type": "story",
+              "question": "Write about when your hero failed and learned",
+              "minWords": 70,
+              "xp": 30,
+              "theme": "Mixed"
+            },
+            {
+              "type": "story",
+              "question": "Describe your hero's origin story",
+              "minWords": 60,
+              "xp": 25,
+              "theme": "Mixed"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "progression": {
+      "xpPerMainLevel": 100,
+      "xpPerSubLevel": 35,
+      "dailyGoal": 50,
+      "streakBonus": 10
+    },
+    "themes": {
+      "available": ["My Hero Academia", "Sonic", "DC", "Marvel", "Pokemon", "Dragon Ball"],
+      "default": "Mixed"
+    }
   }
-]
+}

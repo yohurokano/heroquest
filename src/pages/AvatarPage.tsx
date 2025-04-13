@@ -1,31 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import styles from './AvatarPage.module.css';
-import { FaUserAlt, FaPaintBrush, FaCut, FaTshirt, FaCheck, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaUserAlt, FaPaintBrush, FaCut, FaTshirt, FaCheck } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { playSound } from '../utils/soundManager';
 import HeroCard from '../components/HeroCard';
 
+const hairOptions = ['Short', 'Spiky', 'Curly'];
+const colorOptions = ['#ffadad', '#ffd6a5', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff'];
+const costumeOptions = ['Speedster', 'Hero Uniform', 'Adventurer', 'Mage'];
 
-type Avatar = {
+type AvatarState = {
   name: string;
   color: string;
   hair: string;
   costume: string;
 };
 
-const hairOptions = ['Short', 'Spiky', 'Curly'];
-const colorOptions = ['#ffadad', '#ffd6a5', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff'];
-const costumeOptions = ['Speedster', 'Hero Uniform', 'Adventurer', 'Mage'];
+type ExpandedSections = {
+  name: boolean;
+  color: boolean;
+  hair: boolean;
+  costume: boolean;
+};
 
 const AvatarPage: React.FC = () => {
-  const [avatar, setAvatar] = useState<Avatar>({
+  const [avatar, setAvatar] = useState<AvatarState>({
     name: '',
     color: '#ffadad',
     hair: 'Short',
     costume: 'Speedster',
   });
-  const [expandedSections, setExpandedSections] = useState({
+
+  const [expandedSections, setExpandedSections] = useState<ExpandedSections>({
     name: true,
     color: true,
     hair: true,
@@ -39,7 +45,7 @@ const AvatarPage: React.FC = () => {
     if (saved) setAvatar(JSON.parse(saved));
   }, []);
 
-  const updateAvatar = (key: keyof Avatar, value: string) => {
+  const updateAvatar = (key: keyof AvatarState, value: string) => {
     playSound('click');
     setAvatar(prev => {
       const updated = { ...prev, [key]: value };
@@ -48,7 +54,7 @@ const AvatarPage: React.FC = () => {
     });
   };
 
-  const toggleSection = (section: keyof typeof expandedSections) => {
+  const toggleSection = (section: keyof ExpandedSections) => {
     playSound('click');
     setExpandedSections(prev => ({
       ...prev,
@@ -57,25 +63,17 @@ const AvatarPage: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <button 
-          className={styles.backButton}
-          onClick={() => {
-            playSound('click');
-            navigate('/');
-          }}
-        >
-          <IoMdArrowRoundBack className={styles.backIcon} />
+    <div className="min-h-screen bg-base-100">
+      <header className="flex items-center p-4 bg-primary text-primary-content shadow-md">
+        <button className="btn btn-circle btn-secondary" onClick={() => navigate('/')}>
+          <IoMdArrowRoundBack size={24} />
         </button>
-        <h1 className={styles.title}>
-          <FaUserAlt className={styles.titleIcon} />
-          Customize Your Hero
+        <h1 className="flex-1 text-center text-xl font-semibold flex items-center justify-center gap-2">
+          <FaUserAlt /> Customize Your Hero
         </h1>
       </header>
 
-      {/* Fixed HeroCard that stays at the top */}
-      <div className={styles.fixedHeroCard}>
+      <div className="p-4">
         <HeroCard
           name={avatar.name || 'Your Hero'}
           color={avatar.color}
@@ -83,139 +81,81 @@ const AvatarPage: React.FC = () => {
           costume={avatar.costume}
           large
         />
-      </div>
 
-      {/* Scrollable customization sections */}
-      <main className={styles.scrollableContent}>
-        <section className={styles.customizationSection}>
-          <div className={styles.formGroup}>
-            <div 
-              className={styles.sectionHeader}
-              onClick={() => toggleSection('name')}
-            >
-              <h3 className={styles.sectionTitle}>
-                Hero Name
-              </h3>
-              {expandedSections.name ? (
-                <FaChevronUp className={styles.chevronIcon} />
-              ) : (
-                <FaChevronDown className={styles.chevronIcon} />
-              )}
-            </div>
-            {expandedSections.name && (
+        <div className="space-y-4 mt-6">
+          <section className="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" checked={expandedSections.name} onChange={() => toggleSection('name')} />
+            <div className="collapse-title text-md font-medium">Hero Name</div>
+            <div className="collapse-content">
               <input
                 type="text"
                 value={avatar.name}
                 onChange={e => updateAvatar('name', e.target.value)}
-                className={styles.textInput}
+                className="input input-bordered w-full"
                 placeholder="Enter hero name"
                 maxLength={12}
               />
-            )}
-          </div>
-
-          <div className={styles.formGroup}>
-            <div 
-              className={styles.sectionHeader}
-              onClick={() => toggleSection('color')}
-            >
-              <h3 className={styles.sectionTitle}>
-                <FaPaintBrush className={styles.sectionIcon} />
-                Choose Color
-              </h3>
-              {expandedSections.color ? (
-                <FaChevronUp className={styles.chevronIcon} />
-              ) : (
-                <FaChevronDown className={styles.chevronIcon} />
-              )}
             </div>
-            {expandedSections.color && (
-              <div className={styles.colorGrid}>
-                {colorOptions.map(color => (
-                  <button
-                    key={color}
-                    className={`${styles.colorOption} ${avatar.color === color ? styles.selected : ''}`}
-                    style={{ backgroundColor: color }}
-                    onClick={() => updateAvatar('color', color)}
-                  >
-                    {avatar.color === color && <FaCheck className={styles.checkIcon} />}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          </section>
 
-          <div className={styles.formGroup}>
-            <div 
-              className={styles.sectionHeader}
-              onClick={() => toggleSection('hair')}
-            >
-              <h3 className={styles.sectionTitle}>
-                <FaCut className={styles.sectionIcon} />
-                Hair Style
-              </h3>
-              {expandedSections.hair ? (
-                <FaChevronUp className={styles.chevronIcon} />
-              ) : (
-                <FaChevronDown className={styles.chevronIcon} />
-              )}
+          <section className="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" checked={expandedSections.color} onChange={() => toggleSection('color')} />
+            <div className="collapse-title text-md font-medium flex items-center gap-2">
+              <FaPaintBrush /> Choose Color
             </div>
-            {expandedSections.hair && (
-              <div className={styles.optionsGrid}>
-                {hairOptions.map(h => (
-                  <button
-                    key={h}
-                    onClick={() => updateAvatar('hair', h)}
-                    className={`${styles.optionButton} ${avatar.hair === h ? styles.selected : ''}`}
-                  >
-                    {h}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className={styles.formGroup}>
-            <div 
-              className={styles.sectionHeader}
-              onClick={() => toggleSection('costume')}
-            >
-              <h3 className={styles.sectionTitle}>
-                <FaTshirt className={styles.sectionIcon} />
-                Costume
-              </h3>
-              {expandedSections.costume ? (
-                <FaChevronUp className={styles.chevronIcon} />
-              ) : (
-                <FaChevronDown className={styles.chevronIcon} />
-              )}
+            <div className="collapse-content grid grid-cols-3 gap-2">
+              {colorOptions.map(color => (
+                <button
+                  key={color}
+                  className={`btn btn-circle ${avatar.color === color ? 'btn-primary' : 'btn-ghost'}`}
+                  style={{ backgroundColor: color }}
+                  onClick={() => updateAvatar('color', color)}
+                >
+                  {avatar.color === color && <FaCheck className="text-white" />}
+                </button>
+              ))}
             </div>
-            {expandedSections.costume && (
-              <div className={styles.optionsGrid}>
-                {costumeOptions.map(c => (
-                  <button
-                    key={c}
-                    onClick={() => updateAvatar('costume', c)}
-                    className={`${styles.optionButton} ${avatar.costume === c ? styles.selected : ''}`}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
+          </section>
 
-        <button
-          className={styles.saveButton}
-          onClick={() => {
-            playSound('xp');
-            navigate('/');
-          }}
-        >
-          Save Changes
-        </button>
-      </main>
+          <section className="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" checked={expandedSections.hair} onChange={() => toggleSection('hair')} />
+            <div className="collapse-title text-md font-medium flex items-center gap-2">
+              <FaCut /> Hair Style
+            </div>
+            <div className="collapse-content flex gap-2">
+              {hairOptions.map(h => (
+                <button
+                  key={h}
+                  className={`btn ${avatar.hair === h ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => updateAvatar('hair', h)}
+                >
+                  {h}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" checked={expandedSections.costume} onChange={() => toggleSection('costume')} />
+            <div className="collapse-title text-md font-medium flex items-center gap-2">
+              <FaTshirt /> Costume
+            </div>
+            <div className="collapse-content flex gap-2">
+              {costumeOptions.map(c => (
+                <button
+                  key={c}
+                  className={`btn ${avatar.costume === c ? 'btn-primary' : 'btn-outline'}`}
+                  onClick={() => updateAvatar('costume', c)}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <button className="btn btn-primary w-full mt-4" onClick={() => navigate('/')}>Save Changes</button>
+      </div>
     </div>
   );
 };

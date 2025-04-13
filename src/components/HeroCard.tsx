@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './HeroCard.module.css';
 import { FaFire, FaGem, FaCrown } from 'react-icons/fa';
 
 type Props = {
@@ -35,72 +34,55 @@ const HeroCard: React.FC<Props> = ({
 
   const level = Math.floor(xp / 100) + 1;
   const currentLevelXP = xp % 100;
-  const isMaxLevel = level >= 10; // Assuming max level is 10
+  const isMaxLevel = level >= 10;
 
   return (
-    <div className={`${styles.card} ${large ? styles.large : ''}`}>
-      <div className={styles.cardHeader} style={{ backgroundColor: color }}>
-        <div className={styles.avatarContainer}>
+    <div className={`card ${large ? 'w-80' : 'w-64'} bg-base-200 shadow-xl mx-auto`}> 
+      <div className="card-header flex justify-center p-4" style={{ backgroundColor: color }}>
+        <div className="relative">
           <img
             src={getChibiSrc()}
             alt={`${name}'s avatar`}
             onError={(e) => (e.currentTarget.src = '/assets/chibi/default.png')}
-            className={styles.chibi}
+            className="w-24 h-24 object-cover rounded-full"
           />
           {streak > 0 && (
-            <div className={styles.streakBadge}>
-              <FaFire className={styles.streakIcon} />
-              <span>{streak}</span>
+            <div className="absolute bottom-0 right-0 bg-warning text-warning-content badge badge-sm gap-1">
+              <FaFire /> {streak}
             </div>
           )}
         </div>
       </div>
 
-      <div className={styles.cardBody}>
-        <div className={styles.nameRow}>
-          <h3 className={styles.heroName}>{name || 'Unnamed Hero'}</h3>
-          {isMaxLevel && <FaCrown className={styles.crownIcon} />}
+      <div className="card-body text-center p-4">
+        <div className="flex justify-center items-center gap-1 mb-2">
+          <h3 className="text-xl font-semibold">{name || 'Unnamed Hero'}</h3>
+          {isMaxLevel && <FaCrown className="text-primary" />}
         </div>
-        
-        <div className={styles.heroDetails}>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>Style:</span>
-            <span className={styles.detailValue}>{hair}</span>
-          </div>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>Outfit:</span>
-            <span className={styles.detailValue}>{costume}</span>
-          </div>
+        <div className="text-sm">
+          <p><span className="font-semibold">Style:</span> {hair}</p>
+          <p><span className="font-semibold">Outfit:</span> {costume}</p>
         </div>
 
-        <div className={styles.statsRow}>
+        <div className="flex justify-center gap-4 mt-4">
           {gems > 0 && (
-            <div className={styles.gemCount}>
-              <FaGem className={styles.gemIcon} />
-              <span>{gems}</span>
+            <div className="badge badge-info gap-1">
+              <FaGem /> {gems}
             </div>
           )}
 
           {showXP && (
-            <div className={styles.xpSection}>
+            <div className="flex items-center gap-1">
               {!isMaxLevel ? (
                 <>
-                  <div className={styles.levelBadge}>
-                    Lvl {level}
-                  </div>
-                  <div className={styles.xpBarContainer}>
-                    <div 
-                      className={styles.xpBarFill} 
-                      style={{ width: `${currentLevelXP}%` }}
-                    />
-                    <span className={styles.xpText}>{currentLevelXP}/100</span>
-                  </div>
+                  <span className="badge badge-success">Lvl {level}</span>
+                  <progress className="progress progress-success w-24" value={currentLevelXP} max="100"></progress>
+                  <span className="text-xs">{currentLevelXP}/100</span>
                 </>
               ) : (
-                <div className={styles.maxLevelBadge}>
-                  <FaCrown className={styles.crownIconSmall} />
-                  <span>Max Level</span>
-                </div>
+                <span className="badge badge-primary gap-1">
+                  <FaCrown /> Max Level
+                </span>
               )}
             </div>
           )}

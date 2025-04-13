@@ -5,7 +5,7 @@
       "questions": [
         {
           "type": "basic",
-          "question": "Sonic runs 3 rings/sec. How many in 5 seconds?",
+          "question": "Flash runs 3 rings/sec. How many in 5 seconds?",
           "answer": 15,
           "hint": "Multiply rings per second by number of seconds",
           "xp": 10
@@ -33,15 +33,15 @@
         },
         {
           "type": "decimal",
-          "question": "Bakugo spends 3.5 energy units in battle, how many after 10 units?",
-          "answer": 6.5,
+          "question": "Bakugo spends 4 energy units in battle, how many after 10 units?",
+          "answer": 6,
           "hint": "Subtract the decimal from the total",
           "xp": 10
         },
         {
           "type": "logic",
           "question": "A villain hides in one of 3 caves. He isn\u2019t in Cave 1 or Cave 2. Where is he?",
-          "answer": "Cave 3",
+          "answer": 3,
           "hint": "Process of elimination",
           "xp": 10
         }

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addXP, getXP } from '../utils/xpManager';
 import { unlockLevel, getUnlockedLevels } from '../utils/progressManager';
-import styles from './WordQuestPage.module.css';
 import { FaBook, FaGem, FaLock, FaTrophy } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { playSound } from '../utils/soundManager';
 import { triggerSparkles } from '../utils/sparkle';
+import { incrementStreak } from '../utils/streakManager';
 
 type WordLevel = {
   level: number;
@@ -111,6 +111,7 @@ const WordQuestPage: React.FC = () => {
     if (!currentQuestion || !selectedChoice) return;
     
     playSound('click');
+    incrementStreak();
     
     if (selectedChoice === currentQuestion.answer) {
       playSound('xp');
@@ -147,80 +148,83 @@ const WordQuestPage: React.FC = () => {
     setFeedback('');
   };
 
-  const handleNavigateHome = () => {
-    playSound('click');
-    navigate('/');
-  };
-
   if (selectedLevel !== null && currentQuestion) {
     return (
-      <div className={styles.container}>
-        <header className={styles.header}>
+      <div className="min-h-screen bg-base-100 text-base-content">
+        <header className="navbar bg-base-200 shadow-lg px-4 py-2 fixed top-0 left-0 right-0 z-50">
           <button 
-            className={styles.backButton}
+            className="btn btn-ghost btn-circle"
             onClick={() => {
               playSound('click');
               setSelectedLevel(null);
             }}
           >
-            <IoMdArrowRoundBack className={styles.backIcon} />
+            <IoMdArrowRoundBack className="w-6 h-6" />
           </button>
-          <h1 className={styles.title}>
-            <FaBook className={styles.titleIcon} />
-            {currentLevel.title} - Level {currentLevel.level}
-          </h1>
-          <div className={styles.progress}>
+          <div className="flex-1 flex items-center gap-2 ml-2">
+            <FaBook className="text-primary w-6 h-6" />
+            <h1 className="text-xl font-bold">
+              {currentLevel.title} - Level {currentLevel.level}
+            </h1>
+          </div>
+          <div className="badge badge-neutral">
             Question {step + 1} of {currentLevel.questions.length}
           </div>
         </header>
 
-        <main className={styles.mainContent}>
-          <div className={styles.questStep}>
-            <div className={styles.stepHeader}>
-              <div className={styles.xpBadge}>
-                <FaGem className={styles.gemIcon} />
-                <span>+{currentQuestion.xp} XP</span>
+        <main className="container mx-auto px-4 pt-20 pb-8">
+          <div className="card bg-base-200 shadow-lg mt-4">
+            <div className="card-body">
+              <div className="badge badge-primary gap-2 mb-4">
+                <FaGem className="w-4 h-4" />
+                +{currentQuestion.xp} XP
               </div>
-            </div>
-            
-            <div className={styles.questionCard}>
-              <p className={styles.questionPrompt}>Select the correct word for:</p>
-              <h3 className={styles.word}>{currentQuestion.word}</h3>
-              
-              {currentQuestion.image && (
-                <img 
-                  src={currentQuestion.image} 
-                  alt={currentQuestion.word} 
-                  className={styles.wordImage}
-                />
+
+              <div className="text-center space-y-4">
+                <p className="text-lg font-medium">Select the correct word for:</p>
+                <h2 className="text-3xl font-bold text-primary">{currentQuestion.word}</h2>
+                
+                {currentQuestion.image && (
+                  <img 
+                    src={currentQuestion.image} 
+                    alt={currentQuestion.word}
+                    className="rounded-box mx-auto w-48 h-48 object-contain"
+                  />
+                )}
+
+                <div className="grid grid-cols-1 gap-2 mt-6">
+                  {currentQuestion.choices.map((choice: string, index: number) => (
+                    <button
+                      key={index}
+                      className={`btn justify-start ${
+                        selectedChoice === choice ? 'btn-primary' : 'btn-outline'
+                      }`}
+                      onClick={() => setSelectedChoice(choice)}
+                    >
+                      {choice}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {feedback && (
+                <div className={`alert ${
+                  feedback.includes('✅') ? 'alert-success' : 'alert-error'
+                } mt-4`}>
+                  {feedback}
+                </div>
               )}
-              
-              <div className={styles.choices}>
-                {currentQuestion.choices.map((choice, index) => (
-                  <button
-                    key={index}
-                    className={`${styles.choiceButton} ${selectedChoice === choice ? styles.selected : ''}`}
-                    onClick={() => setSelectedChoice(choice)}
-                  >
-                    {choice}
-                  </button>
-                ))}
+
+              <div className="card-actions justify-end mt-4">
+                <button 
+                  className="btn btn-primary"
+                  onClick={handleAnswer}
+                  disabled={!selectedChoice}
+                >
+                  {step < currentLevel.questions.length - 1 ? 'Submit & Continue' : 'Complete Level'}
+                </button>
               </div>
             </div>
-            
-            {feedback && (
-              <div className={`${styles.feedback} ${feedback.includes('✅') ? styles.correct : styles.incorrect}`}>
-                {feedback}
-              </div>
-            )}
-            
-            <button 
-              className={styles.submitButton}
-              onClick={handleAnswer}
-              disabled={!selectedChoice}
-            >
-              {step < currentLevel.questions.length - 1 ? 'Submit & Continue' : 'Complete Level'}
-            </button>
           </div>
         </main>
       </div>
@@ -228,82 +232,92 @@ const WordQuestPage: React.FC = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
+    <div className="min-h-screen bg-base-100 text-base-content">
+      <header className="navbar bg-base-200 shadow-lg px-4 py-2 fixed top-0 left-0 right-0 z-50">
         <button 
-          className={styles.backButton}
-          onClick={handleNavigateHome}
+          className="btn btn-ghost btn-circle"
+          onClick={() => navigate('/')}
         >
-          <IoMdArrowRoundBack className={styles.backIcon} />
+          <IoMdArrowRoundBack className="w-6 h-6" />
         </button>
-        <h1 className={styles.title}>
-          <FaBook className={styles.titleIcon} />
-          Word Puzzle Quest
-        </h1>
-        <div className={styles.xpDisplay}>
-          <FaGem className={styles.gemIcon} />
-          <span>{totalXP} XP</span>
+        <div className="flex-1 flex items-center gap-2 ml-2">
+          <FaBook className="text-primary w-6 h-6" />
+          <h1 className="text-xl font-bold">Word Puzzle Quest</h1>
+        </div>
+        <div className="badge badge-neutral gap-2">
+          <FaGem className="w-4 h-4" />
+          {totalXP} XP
         </div>
       </header>
 
-      <main className={styles.levelSelection}>
-        <h2 className={styles.sectionTitle}>Select Difficulty Level</h2>
+      <main className="container mx-auto px-4 pt-20 pb-8">
+        <h2 className="text-2xl font-bold mb-6">Select Difficulty Level</h2>
         
-        <div className={styles.levelsGrid}>
-          {wordLevels.map((level, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {wordLevels.map((level: WordLevel, index: number) => {
             const isUnlocked = unlockedLevels.includes(level.level) || index === 0;
             const canUnlock = totalXP >= level.requiredXP && !isUnlocked;
             
             return (
               <div 
                 key={level.level} 
-                className={`${styles.levelCard} ${isUnlocked ? styles.unlocked : styles.locked}`}
+                className={`card bg-base-200 shadow-lg ${
+                  !isUnlocked ? 'opacity-75' : 'cursor-pointer hover:bg-base-300'
+                }`}
                 onClick={() => isUnlocked && startLevel(index)}
               >
-                <div className={styles.levelHeader}>
-                  <h3>{level.title} - Level {level.level}</h3>
-                  {isUnlocked ? (
-                    <FaTrophy className={styles.trophyIcon} />
-                  ) : (
-                    <FaLock className={styles.lockIcon} />
-                  )}
-                </div>
-                
-                <p className={styles.levelDescription}>{level.description}</p>
-                
-                <div className={styles.levelInfo}>
-                  <p>{level.questions.length} words</p>
-                  <p>Reward: {level.questions.reduce((sum, q) => sum + q.xp, 0)} XP</p>
-                </div>
-                
-                {!isUnlocked && (
-                  <div className={styles.lockInfo}>
-                    {canUnlock ? (
-                      <button 
-                        className={styles.unlockButton}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          unlockLevel('word', level.level);
-                          setUnlockedLevels([...unlockedLevels, level.level]);
-                          playSound('success');
-                        }}
-                      >
-                        Unlock Now
-                      </button>
+                <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-medium">
+                      {level.title} - Level {level.level}
+                    </h3>
+                    {isUnlocked ? (
+                      <FaTrophy className="text-warning w-6 h-6" />
                     ) : (
-                      <p>Requires {level.requiredXP} XP</p>
+                      <FaLock className="text-error w-6 h-6" />
                     )}
                   </div>
-                )}
-                
-                {isUnlocked && (
-                  <button 
-                    className={styles.startButton}
-                    onClick={() => startLevel(index)}
-                  >
-                    Start Level
-                  </button>
-                )}
+
+                  <p className="text-sm opacity-75 mt-2">{level.description}</p>
+
+                  <div className="flex justify-between mt-4">
+                    <span>{level.questions.length} words</span>
+                    <span className="badge badge-neutral">
+                      {level.questions.reduce((sum: number, q: { xp: number }) => sum + q.xp, 0)} XP
+                    </span>
+                  </div>
+
+                  {!isUnlocked && (
+                    <div className="mt-4">
+                      {canUnlock ? (
+                        <button 
+                          className="btn btn-sm btn-primary w-full"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            unlockLevel('word', level.level);
+                            setUnlockedLevels([...unlockedLevels, level.level]);
+                            playSound('success');
+                          }}
+                        >
+                          Unlock Now
+                        </button>
+                      ) : (
+                        <div className="badge badge-neutral">
+                          Requires {level.requiredXP} XP
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {isUnlocked && (
+                    <button 
+                      className="btn btn-outline btn-sm w-full mt-4"
+                      onClick={() => startLevel(index)}
+                    >
+                      Start Level
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}

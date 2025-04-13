@@ -1,9 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  FaHome, FaUserEdit, FaBook, FaGem
-} from 'react-icons/fa';
-import styles from './BottomNav.module.css';
+import { FaHome, FaUserEdit, FaBook, FaGem } from 'react-icons/fa';
 
 const BottomNav: React.FC = () => {
   const navigate = useNavigate();
@@ -21,23 +18,21 @@ const BottomNav: React.FC = () => {
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className="fixed bottom-0 left-0 right-0 bg-base-100 shadow-md py-2 px-4 flex justify-around border-t border-base-200">
       {navItems.map((item) => {
         const active = isActive(item.activePaths);
         return (
           <button
             key={item.path}
-            className={`${styles.navItem} ${active ? styles.active : ''}`}
+            className={`flex flex-col items-center text-xs ${active ? 'text-primary' : 'text-base-content'}`}
             onClick={() => navigate(item.path)}
             aria-current={active ? 'page' : undefined}
           >
-            <div className={styles.iconContainer}>
-              {React.cloneElement(item.icon, {
-                className: `${styles.icon} ${active ? styles.activeIcon : ''}`
-              })}
+            <div className={`text-xl ${active ? 'text-primary' : 'text-base-content'}`}>
+              {item.icon}
             </div>
-            <span className={styles.label}>{item.label}</span>
-            {active && <div className={styles.activeIndicator}></div>}
+            <span>{item.label}</span>
+            {active && <div className="h-1 w-4 rounded bg-primary mt-1"></div>}
           </button>
         );
       })}

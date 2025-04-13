@@ -1,1 +1,55 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: emelephant --default, emelephant-dark --prefersdark;
+}
+
+
+
+@plugin "daisyui/theme" {
+  name: "emelephant";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(97% 0 0);
+  --color-base-200: oklch(92% 0 0);
+  --color-base-300: oklch(87% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-primary: oklch(50% 0.118 165.612);
+  --color-primary-content: oklch(96% 0.001 286.375);
+  --color-secondary: oklch(26% 0.051 172.552);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(79% 0.184 86.047);
+  --color-accent-content: oklch(27% 0.041 260.031);
+  --color-neutral: oklch(37% 0.013 285.805);
+  --color-neutral-content: oklch(96% 0.007 247.896);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(0% 0 0);
+  --color-success: oklch(72% 0.219 149.579);
+  --color-success-content: oklch(0% 0 0);
+  --color-warning: oklch(85% 0.199 91.936);
+  --color-warning-content: oklch(0% 0 0);
+  --color-error: oklch(63% 0.237 25.331);
+  --color-error-content: oklch(0% 0 0);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+
+
+
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 
